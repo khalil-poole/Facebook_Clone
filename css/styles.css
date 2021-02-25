@@ -1,0 +1,827 @@
+/*=================================================*/
+
+
+/*UNIVERSAL*/
+
+
+* {
+    box-sizing: border-box;
+}
+*:focus {
+    outline:none;
+}
+
+/*variable colors that can be used without repetition*/
+:root {
+    --fb-blue: #0a86f0;
+    --fb-black: #090909;
+    --fb-red: #ee2340;
+    --fb-green: #3db557;
+    --fb-yellow: #f6b024;
+    --fb-bgcolor: #eef0f3;
+    --fb-white: #fff;
+    --fb-whitebg: #fff;
+    --dark-color-text: #090909;
+    --light-color-text: #606770;
+    --button-link: #e0e2e8;
+    --stories-bg: #090909;
+    --icon-circle-bg: linear-gradient(0deg, rgba(65,67,69,1) 0%, rgba(107,110,114,1) 100%);
+    --shadow-color: rgba(0,0,0,0.25)
+}
+
+/*Creating a Dark Mode for websites*/
+
+/*
+@media(prefers-color-scheme: dark){
+    :root{
+    --fb-blue: #424080;
+    --fb-black: #fff;
+    --fb-red: #ee2340;
+    --fb-green: #6fcf97;
+    --fb-yellow: #f6b024;
+    --fb-bgcolor: #141432;
+    --fb-white: #fff;
+    --fb-whitebg: #1d1d42;
+    --dark-color-text: #fff;
+    --light-color-text: #d4d4dc;
+    --button-link: #424080;
+    --stories-bg: #424080;
+    }
+}
+*/
+
+
+
+body {
+    background: var(--fb-bgcolor);
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--fb-black);
+}
+
+/*=========================================================*/
+
+
+
+/*HEADER*/
+
+
+header {
+    background: var(--fb-whitebg);
+    height: 62px;
+    display: flex; /*Becomes a flex container*/
+    padding: 0 15px;
+    align-items: center; /*Center the items*/
+    justify-content: space-between; /*space between the header sections*/
+    /*The selectors below will fullscreen the white background*/
+    width: 100%;
+    box-shadow: 0px 0px 5px 0px var(--shadow-color); /*Shadow below the header*/
+    position: fixed; 
+    z-index: 20;
+    top: 0;
+    left: 0;
+}
+
+.header-logo-section {
+    display: flex; /*Puts FB logo beside the searchbar*/
+}
+
+.header-logo-icon .fa-facebook {
+    font-size: 40px;
+    color: var(--fb-blue); /*Makes the FB logo, blue*/
+}
+.header-logo-search{
+    position: relative;
+    margin-left: 15px; /*Away from the logo*/
+}
+
+
+.header-logo-search .fa-search {
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    color: var(--light-color-text);
+}
+
+/*Search bar text properties*/
+.header-logo-search input[type="text"]{
+    background: var(--fb-bgcolor);
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color: var(--light-color-text);
+    padding-left: 55px; /*search bar length*/
+    font-weight: 300;
+    border: none;
+    margin-right: 20px;
+}
+
+.header-mobile-button {
+    display: none; /*Hides the hamburger button*/
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+}
+
+.header-menu-tabs {
+    display: flex;
+    max-width: 600px;
+    width: 100%; /*Max width will be 600px*/
+    flex: none; /*Tabs Will not shrink or grow*/
+
+}
+
+.header-menu-tab {
+    display: flex;  /*Tab will be center*/
+    justify-content: center; /*Tab will be center*/
+    align-items: center; /*Tab will be centered vertically*/
+    width: 600px;
+    height: 62px; /*Same height as the header*/
+    border-bottom: 4px solid var(--fb-whitebg);
+    color: var(--light-color-text);
+    cursor: pointer;
+    font-size: 1.3rem; /*Icons are treated as text*/
+}
+
+.header-menu-tab-active, .header-menu-tab:hover {
+border-bottom: 4px solid var(--fb-blue);
+}
+
+.header-menu-tab:hover .fas, .header-menu-tab:hover .fab{
+    color: var(--fb-blue); /*Icons will turn blue upon hover*/
+}
+
+.header-menu-tab-active .fas, .header-menu-tab-active .fab {
+    color: var(--fb-blue); /*Icons will remain blue while active*/
+}
+
+.header-menu-tab .fas, .header-menu-tab .fab{
+    position: relative; /*Make the icons relative to move icons to the top*/
+}
+
+.header-notification-bubble {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fb-red); /*Notifications turn red*/
+    color: white; /*color inside notifications will be white*/
+    height: 20px;
+    width: 20px;
+    font-size: .8rem;
+    display: flex; /*notifications will be in the middle*/
+    justify-content: center; /*notifications will be in the middle hori*/
+    align-items: center; /*notifications will be in the middle verti*/
+    border-radius: 50%; /*perfect circle*/
+    position: absolute; 
+    top: -12px; /*Puts notification at the top right corner of the icons*/
+    right: -12px; /*Puts notification at the top right corner of the icons*/
+    font-weight: 700;
+}
+
+.header-account{
+display: flex;    
+}
+
+.header-actions{
+    display: flex; /*align the items next to each other*/
+    justify-content: center; /*Centers Hori*/
+    align-items: center;  /*Centers Verti*/
+}
+
+.header-user-img{
+    border-radius: 50%; /*perfect circle for the image*/
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+}
+
+.header-user-name{
+    font-size: .9rem;
+    font-weight: 600;
+    margin-right: 20px; /*Push buttons 20px to the right*/
+}
+.header-circle-link{
+    background: var(--button-link);
+    height: 40px;
+    width: 40px;
+    display: flex; /*Center items right in the middle*/
+    border-radius: 50%; /*Perfect circle*/
+    color: var(--dark-color-text); /*Change text color to be dark*/
+    justify-content: center; /*Centers Hori*/
+    align-items: center; /*Centers Verti*/
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.header-circle-link .fa-sort-down {
+    position: relative;
+    top: -3px;
+    font-size: 1.4rem;
+}
+
+.header-link-icon{
+    font-size: 1.1rem; /*size of the actual icons*/
+}
+
+
+.header-circle-link .header-link-icon{
+    position: relative; /*Notification position is relative to the icons*/
+}
+
+.header-notification-bubble-right {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fb-red); /*Notifications turn red*/
+    color: white; /*color inside notifications will be white*/
+    height: 20px;
+    width: 20px;
+    font-size: .8rem;
+    display: flex; /*notifications will be in the middle*/
+    justify-content: center; /*notifications will be in the middle hori*/
+    align-items: center; /*notifications will be in the middle verti*/
+    border-radius: 50%; /*perfect circle*/
+    position: absolute; 
+    top: -18px; /*Puts notification at the top right corner of the icons*/
+    right: -15px; /*Puts notification at the top right corner of the icons*/
+    font-weight: 700;
+}
+
+
+/*============================================================*/
+
+
+
+
+/*SIDEBAR-LEFT*/
+
+
+
+.content-area-feed{
+    padding: 90px 15px 20px; /*90px top, 15px left & right, 20px bottom*/
+    display: flex; /*Everything will be next to each other*/
+}
+
+.sidenav {
+    width: 25%; /*Using 25% of the screen for the sidenav*/
+}
+
+.sidenav-item{
+    display: flex; /*Everything will be next to each other*/
+    align-items: center; /*Centers Hori*/
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+
+.sidenav-item-img{
+    border-radius: 50%; /*Perfect Circle*/
+    height: 40px;
+    width: 40px;
+    margin-right: 20px; /*Pushes the name 20px to the right away from the image*/
+    object-fit: cover; /*Makes the image fit but keeps the aspect ratio*/
+    object-position: center; /*Puts image right in the middle*/
+}
+
+.sidenav-item-title{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.sidenav-item-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center; /*Centers Hori*/
+    align-items: center; /*Centers Verti*/
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.sidenav-item-notification {
+    color: var(--fb-blue);
+    margin-top: 5px;
+    font-size: .75rem;
+    display: block; /*Takes up the whole space*/
+    font-weight: 300;
+}
+
+.sidenav-item-notification-circle {
+    background: var(--fb-blue);
+    display: inline-block; /*Will make the small circle appear beside the "9+ new" text no matter what*, whilist "9+ new" takes up the whole block/
+    width: 7px;
+    height: 7px;
+    border-radius: 50%; /*Perfect Circle*/
+    margin-right: 5px;
+}
+
+.sidenav-item-icon-circle {
+    background: var(--button-link);
+    border-radius: 50%; /*Perfect Circle*/
+    font-size: .9rem;
+}
+
+.sidenav-item-icon-circle-white {
+    background: var(--fb-blue);
+    border-radius: 50%; /*Perfect Circle*/
+    font-size: 1rem;
+    width: 35px;
+    height: 35px;
+}
+
+.sidenav-item-icon .fas, .sidenav-item-icon .fab {
+    color: var(--fb-blue);
+    
+}
+
+.sidenav-item-icon-circle .fas, .sidenav-item-icon-circle .fab {
+    color: var(--fb-black);
+
+}
+
+.sidenav-item-icon-circle-white .fas, .sidenav-item-icon-circle-white .fab {
+    color: var(--fb-white);
+
+}
+
+
+
+.sidenav-line {
+    height: 3px;
+    background: var(--button-link);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.sidenav-heading-title {
+    display: block;
+    color: var(--light-color-text);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    font-weight: 600;
+}
+
+
+
+/*============================================================*/
+
+
+
+
+/*NEWS FEED*/
+
+.feed{
+    width: 50%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /*Everything will be in a column within the class*/
+}
+
+.stories{
+    display: flex;
+    max-width: 700px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.stories-video-container{
+    overflow: hidden; /*Hide anything inside of this container*/
+    width: 120px;
+    height: 200px;
+    border-radius: 5px;
+    background: var(--stories-bg);
+    position: relative; /*Items will be able to move within the container*/
+    box-shadow: 0px 2px 2px 0px var(--shadow-color);
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.stories-video-container:nth-last-child(1){
+margin-right: 0px; /*Do NOT put any margin-right on the last child(element)*/
+}
+
+.stories-bg {
+    object-fit: cover; /*Keeps the aspect ratio*/
+    object-position: center;
+    width: 125px;
+    height: 200px;
+    opacity: 0.2; /*Transparency*/
+    transition: opacity .3s ease-in-out;
+}
+
+.stories-video-container:hover .stories-bg{
+    opacity: 0.8; /*Fades in the story icons*/
+}
+
+.stories-title{
+    position: absolute;
+    bottom: 0;
+    background: var(--fb-whitebg);
+    width: 100%;
+    color: var(--fb-black);
+    padding: 20px 20px 10px; /*20px top, 20px left & right, 10px bottom*/
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.stories-new-btn{
+    background: var(--fb-blue);
+    width: 40px;
+    height: 40px;
+    color: var(--fb-white);
+    display: flex;
+    justify-content: center; /*Center the icon*/
+    align-items: center;
+    border-radius: 50%; /*Perfect Circle*/
+    border: 4px solid var(--fb-white);
+    position: absolute;
+    top: -20px;
+    left: 40px;
+}
+
+.stories-video-container-plain .stories-title{
+    background: transparent;
+    color: var(--fb-white);
+}
+
+.stories-user{
+    border: 4px solid var(--fb-blue);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: -113px;
+    left: 10px;
+}
+
+.feed-box-submitpost{
+    padding: 20px;
+    background: var(--fb-whitebg);
+    max-width: 700px;
+    width: 100%;
+    flex: none;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px 0px var(--shadow-color);
+    margin-bottom: 20px;
+}
+
+.newpost{
+    display: flex;
+    margin-bottom: 10px;   
+}
+
+.newpost-user-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px; /*pushes input away from the image*/
+}
+
+.newpost input[type="text"]{
+    background: var(--fb-bgcolor);
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--light-color-text);
+    padding-left: 20px;
+    font-weight: 300;
+    width: 100%;
+}
+
+.hline{
+    height: 1px;
+    background: var(--button-link);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.post-types{
+    display: flex;
+    justify-content: space-between; /*evenly spreads the post types in between the empty space*/
+
+}
+
+.post-types-item{
+    display: flex; /*Everything is flexed, then right next to each other*/
+    justify-content: center; /*Centers Hori*/
+    align-items: center; /*Centers Verti*/
+    text-align: center; /*Centers the text*/
+    width: 100%; /*Takes whatever space is left and splits it evenly*/
+}
+
+.post-types-item .fas, .post-types-item .far{
+    margin: 10px;
+    font-size: 1.5rem;
+}
+
+.post-types-item .fa-video{
+    color: var(--fb-red);
+}
+
+.post-types-item .fa-photo-video{
+    color: var(--fb-green);
+}
+
+.post-types-item .fa-laugh-beam{
+    color: var(--fb-yellow);
+}
+
+.feed-box-photopost {
+    background: var(--fb-whitebg);
+    max-width: 700px;
+}
+
+.photopost {
+    padding: 0 0 20px;
+    margin-bottom: 20px;
+    
+  }
+  
+  .photopost-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 20px;
+
+  }
+  
+  .photopost-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .photopost-left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px 10px 10px 0;
+  }
+  
+  .photopost-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+  }
+  
+  .photopost-name {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-weight: 400;
+    
+  }
+  .photopost-date {
+    font-size: 0.8rem;
+    color: var(--light-color-text);
+  }
+  
+  .fa-user-friends {
+   padding-left: 10px;     
+  }
+
+  .photopost-info .fa-ellipsis-h {
+    color: var(--light-color-text);
+  }
+  
+  .photopost-description {
+    padding: 0 20px;
+    margin-bottom: 20px;
+
+  }
+  
+  .photopost-image img {
+    width: 100%; /*Contain within the parents' (photopost-image) container.*/
+  }
+
+  .photopost-stats {
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /*push emojis in the middle*/
+      padding: 0 20px;
+      color: var(--light-color-text);
+      font-weight: 300;
+      font-size: .9rem;
+  }
+
+.photopost-stats-emojis {
+      display: flex; /*Horizontal*/
+      justify-content: center; /*Right in the center*/
+      align-items: center;
+  }
+
+.emoji-circle{
+      display: flex;
+      width: 22px;
+      height: 22px;
+      background: black;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      font-size: .5rem; /*Size of emoji*/
+      border-radius: 50%;
+      border: 2px solid white;
+      position: relative;
+  }
+
+.emoji-circle:nth-child(1){
+z-index: 3; /*On top of heart/surprise */
+}
+.emoji-circle:nth-child(2){
+left: -5px; /*On top of surprise/ */
+z-index: 2; /*On top of surprise/ */
+}
+
+.emoji-circle:nth-child(3){
+left: -10px; /*Last*/
+z-index: 1; /*Last*/   
+}
+
+.emoji-circle-blue{
+background: linear-gradient(0deg, rgba(4,60,108,1) 0%, rgba(10,134,240,1) 100%);
+}
+
+.emoji-circle-red {
+background: linear-gradient(0deg, rgba(92,15,26,1) 0%, rgba(238,35,64,1) 100%);
+}
+
+.emoji-circle-yellow {
+background: #000; /*Black behind the emoji itself*/
+overflow: hidden; /*Keep everything within the area*/
+}
+
+.emoji-circle-blue .fa-thumbs-up {
+    position: relative;
+    top: -1px;
+}
+
+.emoji-circle-yellow .fa-surprise{
+    color: rgba(246,176,36,1); /*Yellow for the emoji*/
+    font-size: 1.3rem;
+    position: relative;
+    top: -1px;
+}
+
+.photopost-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.photopost-link {
+    display: flex; /*Horizontal*/
+    justify-content: center; /*Vertical*/
+    align-items: center; /*Vertical*/
+    color: var(--light-color-text);
+    width: 100%; /*Spreads evenly*/
+    text-decoration: none; 
+}
+
+.photopost-link .fas {
+    margin-right: 10px;
+}
+
+.floatingmsg {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+}
+
+.floatingmsg-bubble {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 10px 0px var(--shadow-color);
+    background: var(--button-link);
+    margin-bottom: 10px; /*Separate each circle*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.floatingmsg-bubble img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.floatingmsg-bubble:hover .fa-edit {
+    color: var(--fb-blue);
+}
+
+.floatingmsg-notification {
+    background: var(--fb-red);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-weight: 700px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+
+
+/*============================================================*/
+
+
+
+/*SIDEBAR-RIGHT - Work in Progress*/
+
+/*
+
+.content-area-feed-right{
+    display: flex; Everything will be next to each other
+    float: right;
+    margin: -200px;
+    top: 0%;
+    right: 0%;
+}
+
+*/
+
+/*Making the site responsive*/
+
+
+/*=====================================================================?*/
+
+
+
+/*Desktop Version*/
+
+@media only screen and (max-width: 1300px) {
+    .header-menu-tabs{
+        display: none; /*If screen is less than 1300px, hide the top center portion (header-menu-tabs)*/
+    }
+    .feed {
+        width: 100%; /* If screen is less than 1300px, 100% width will be applied*/
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .sidenav {
+        display: none; /*Once screen reached BELOW 1000px, hide the sidenav on the left*/
+    }
+}
+
+
+
+/*Phone & Tablet Version*/
+
+@media only screen and (max-width: 768px) {
+    .header-user-img {
+        display: none; /*Hide profile pic if less than 768px*/
+    }
+    .header-user-name {
+        display: none; /*Hide name if less than 768px*/
+    }
+    .header-logo-search input[type="text"] {
+        width: 40px; /*Makes search bar into a circle if less than 768px*/
+        height: 40px; /*Makes search bar into a circle if less than 768px*/
+        padding: 0;
+    }
+    .header-logo-search .fa-search{
+        left: 12px; /*Forms the circle for the search bar*/
+        top: 12px; /*Forms the circle for the search bar*/
+    }
+    .header-mobile-button {
+        display: flex; /*Once screen reaches BELOW 768px, bring back the hamburger button*/
+    }
+    .feed {
+        display: block; /*How the stories will be shown at certain sizes*/
+    }
+    .stories {
+        flex-wrap: nowrap;
+        z-index: 9;
+        padding-bottom: 20px;
+        overflow-x: scroll; /*As the screen gets smaller, the elements' width and height will remain the same
+                            Use the mouse or finger to swipe stories right or left*/
+    }
+    .stories-video-container{
+        flex: 1 0 auto; /*Video containers will NOT shrink*/
+    }
+    .content-area-feed{
+        width: 100%; /*Fixes width issues for screens less than 768px*/
+    }
+}
+
+@media only screen and (max-width: 411px) {
+    .header-account{
+        display: none; /*Hide header account icons for screens less than 411px*/
+    }
+    .post-types-title{
+        display: none; /*Hide the text beside the post types for screens less than 411px*/
+    }
+}
